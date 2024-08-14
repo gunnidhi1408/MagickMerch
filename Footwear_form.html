@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footwear Description</title>
+    <link rel="stylesheet" href="Common_form.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Footwear Description</h2>
+        <form id="clothesForm">
+            <div class="form-group">
+                <label for="Footwear Type">Footwear Type:</label>
+                <input type="text" id="Footwear Type" name="Footwear Type" required>
+            </div>
+            <div class="form-group">
+                <label for="Footwear Brand">Footwear Brand:</label>
+                <input type="text" id="Footwear Brand" name="Footwear Brand" required>
+            </div>
+            <div class="form-group">
+                <label for="Footwear Material">Footwear Material:</label>
+                <input type="text" id="Footwear Material" name="Footwear Material" required>
+            </div>
+            <div class="form-group">
+                <label for="size">Size:</label>
+                <select id="size" name="size">
+                    <option value="Select size">Select size</option>
+                    <option value="uk5">UK-5</option>
+                    <option value="uk6">UK-6</option>
+                    <option value="uk7">UK-7</option>
+                    <option value="uk8">UK-8</option>
+                    <option value="uk9">UK-9</option>
+                    <option value="uk10">UK-10</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Optional Accessories">Any other specifications:</label>
+                <input type="text" id="Optional Accessories" name="Optional Accessories" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" min="0" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="offer">Discount:</label>
+                <input type="text" id="offer" name="offer">
+            </div> 
+            <div class="form-group"> 
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagickMerch</title>
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/addtask.css">
+    <link rel="stylesheet" href="./css/quotes.css">
+    <link rel="stylesheet" href="./css/footer.css">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io1/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo_MagickMerch.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo_MagickMerch.png">
+    <link rel="manifest" href="favicon_io1/apple-touch-icon.png">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1d01b17507.js" crossorigin="anonymous"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <style>
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 9999; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%; /* Could be more or less, depending on screen size */
+  height: 100%;
+}
+
+/* Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style the iframe */
+#whiteboardIframe,#timerIframe {
+  width: 100%;
+  height: 90%;
+  border: none;
+}
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+
+        </button>
+        <div class="collapse navbar-collapse" id="mainContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="nav-list">
+                    <div class="left"></div>
+                    <div class="right"></div>
+                </div>
+                <li class="nav-item">
+                      <a class="nav-link" href="javascript:void(0)"><img src="logo_MagickMerch.png" style="height: 75px; width: 195px;margin-left: 2px;"> </a> 
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./index.html"><i class="fas fa-tachometer-alt"></i>Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="aboutus.html"><i class="far fa-address-book"></i> About Us </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                        href="https://us22.list-manage.com/contact-form?u=5b16eb939906a7f28984cbfca&form_id=e6c7ac9578a8de37246b4deda52bb18f" target="_blank"> <i
+                            class="far fa-clone"></i> Contact Us </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="final-proj.html"><i class="fa-regular fa-circle-user"></i> Login </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+    <div class="quotes">
+
+        <!-- whole quotes functionality and structure -->
+        <div class="quotefull" style="width: 50%;margin: auto; line-height: 14px;">
+            <div class="quoteandicon">
+                <h3><i class="fa-solid fa-quote-left" style="text-align: center;"></i> Quotes </h3>
+            </div>
+            <div id="quotesjsfetcher" style="text-align: center;"> </div>
+        </div>
+        <!-- fetching quotes from js array -->
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="nav-bar" id="nav-bar">
+            <input id="nav-toggle" type="checkbox" />
+            <div id="nav-header"><a id="nav-title" href="#">MagickMerch</a>
+                <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+                
+            </div>
+            <div id="nav-content">
+                <div class="nav-button" onclick="showNewTaskScreen()"><i class="fas fa-plus"></i><span>Create Catalog</span></div>
+                <div class="nav-button"><a href="./index.html"><i class="fas fa-pen"></i><span>Name Suggester</span></a></div>
+                <div class="nav-button" onclick="openWhiteboardPopup()"><i class="fas fa-images"></i><span>Logo Designing</span></div>
+
+                
+                <div class="nav-button" onclick="openTimerPopup()"><i class="fas fa-copy"></i><span>Web Page Designer</span></div>
+                <hr/>
+                
+                <div class="nav-button" onclick="clearAll()"><i class="fas fa-chart-line"></i><span>Clear All</span></div>
+                <div class="nav-button"> <a href="https://us22.list-manage.com/contact-form?u=5b16eb939906a7f28984cbfca&form_id=e6c7ac9578a8de37246b4deda52bb18f" target="_blank"><i class="fas fa-fire"></i><span>Help</span></a></div>
+                <div class="nav-button"><i class="fas fa-magic"></i><span>MagickMerch Pro</span></div>
+                <hr />
+                
+                <div id="nav-content-highlight"></div>
+            </div>
+            <input id="nav-footer-toggle" type="checkbox" />
+            <div id="nav-footer">
+                <div id="nav-footer-heading">
+                    <div id="nav-footer-avatar"><img
+                            src="https://gravatar.com/avatar/4474ca42d303761c2901fa819c4f2547" /></div>
+                    <div id="nav-footer-titlebox"><a id="nav-footer-title" href="#" target="_blank">Dev Dynamos</a><span
+                            id="nav-footer-subtitle">Admin</span></div>
+                    <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
+                </div>
+                <div id="nav-footer-content">
+                    <Lorem>Dev Dynamos: Igniting innovation in catalogue creation, empowering businesses with dynamic, customizable solutions for captivating product presentations.</Lorem>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Sidebar -->
+    <div class="centercontent">
+    <audio id="alarmSound">
+        <source src="alarm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <!-- <img src="./Images/background.png" alt=""> -->
+    <p style="background-image: url('./Images/background.png');"></p>
+
+    <div class="card" id="goodMorningCard">
+        <h2>WELCOME!</h2>
+        <p>TO</p>       
+        <div class="greet_img">
+            <img class="im1" src="logowhiteblack-removebg-preview.png" >
+            <img class="im2" src="./Images/hemicircle2.png" alt="Greeting Image" />
+        </div>
+        <!-- <div class="search-box-greet">
+            <input type="text" placeholder="Add Your Product...">
+        </div> -->
+        <div class="task-icon-greet" onclick="showNewTaskScreen()">
+            <img class="add-icon1" src="Images/add-file.png" alt="Add Task Icon" />
+
+        </div>
+
+    </div>
+
+    <div class="card" id="taskListCard">
+
+        <h2>Product List</h2>
+        <!-- <div class="search-box">
+            <input type="text" placeholder="Add Your Product...">
+        </div> -->
+       <div class="task-icon" onclick="showNewTaskScreen()">
+            <img class="add-icon" src="Images/add-file.png" alt="Add Task Button" />
+ 
+        </div>
+        
+        <div class="clear-all-icon" onclick="clearAll()">
+            <img class="clear-all" src="Images/reduce.png" alt="Clear All Button" />
+
+        </div>
+        <div id="tasksContainer"></div>
+    </div>
+  
+
+    <div class="new-task-screen" id="newTaskScreen">
+        <div class="new-task-form">
+            
+            <form onsubmit="return addTask()">
+                <legend><h2></h2><br></legend>
+                <div class="select-container" >
+                    
+                    <label id="dropdown" style="font-weight: 1000;" >Product Category:</label>
+                    <div class="typess" style="display: grid; text-decoration-color: black;">
+                    <a href="Mobile_form.html" style="border: dashed; background-color:aquamarine; text-decoration: none; text-align: center; color: black; font-weight: bold;">Mobiles</a>
+                    <a href="clothes_form.html" style="border: dashed; background-color:aquamarine;text-decoration: none;text-align: center; color: black; font-weight: bold;">Clothes</a>
+                    <a href="Electronics_form.html" style="border: dashed; background-color:aquamarine;text-decoration: none;text-align: center; color: black; font-weight: bold;">Electronics</a>
+                    <a href="book_form.html" style="border: dashed; background-color:aquamarine;text-decoration: none;text-align: center; color: black; font-weight: bold;">Books</a>
+                    <a href="Footwear_form.html" style="border: dashed; background-color:aquamarine;text-decoration: none;text-align: center; color: black; font-weight: bold;">Footwear</a>
+                    <a href="Home_essentials.html" style="border: dashed; background-color:aquamarine;text-decoration: none;text-align: center; color: black; font-weight: bold;">Home Essentials</a>
+                    <a href="toys_form.html" style="border: dashed; background-color:aquamarine;text-decoration: none;text-align: center; color: black; font-weight: bold;">Toys</a>
+                    </div>
+                    <br>
+                    <br>
+                    <lable id="add-imgs" style="font-weight: 1000;">Add Product Pictures:</lable>
+                    <input type="file" name="10" id="file" multiple="multiple" />
+                    <!-- <select id="dropdown" >
+                        <option>Select Category of Product</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Mobiles">Mobiles</option>
+                        <option value="Books">Books</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Footwear">Footwear</option>
+                        <option value="Home Essentials">Home Essentials</option>
+                        <option value="Toys">Toys</option>
+                    </select> -->
+                   
+                </div>
+                <!-- <input type="text" id="userName" placeholder="Your Name" required><br><br>
+                <input type="email" id="userEmail" placeholder="Your Email" required><br><br>
+                <input type="text" id="taskName" placeholder="Product Name" required><br><br>
+                <textarea id="taskDescription" placeholder="Product Description" required></textarea><br><br>
+                <label for="taskDate">Date:</label>
+                <input type="date" id="taskDate" name="taskDate" required><br><br>
+                <label for="taskTime">Time:</label>
+                <input type="time" id="taskTime" name="taskTime" required><br><br> -->
+
+
+                <!-- <div class="color-picker-form"> -->
+                    <!-- <h2>Change Color</h2> -->
+                    <!-- <div class="color-option" style="background-color: #fcf6bd" onclick="takeColor('#fcf6bd')"></div> -->
+                    <!-- <div
+                class="color-option"
+                style="background-color: #70d6ff"
+                onclick="changeColor('#70d6ff')"
+              ></div> -->
+                    <!-- <div class="color-option" style="background-color: #9381ff" onclick="takeColor('#9381ff')" le></div>
+                    <div class="color-option" style="background-color: #ff9770" onclick="takeColor('#ff9770')"></div>
+                    <div class="color-option" style="background-color: #fb6f92" onclick="takeColor('#fb6f92')"></div>
+                    <div class="color-option" style="background-color: #84ffc9" onclick="takeColor('#84ffc9')"></div>
+                    <div class="color-option" style="background-color: #ff6961" onclick="takeColor('#ff6961')"></div>
+                    <div class="color-option" style="background-color: #fdf4f5" onclick="takeColor('#fdf4f5')"></div>
+                    <div class="color-option" style="background-color: #d1d1d1" onclick="takeColor('#d1d1d1')"></div>
+                    -->
+                    <div class="button-group" style=" margin-left: 100px; margin-top: 20px;">
+                        <button type="submit" onclick="openNewForm()">Next</button>
+                        <button type="button" onclick="hideNewTaskScreen()">Cancel</button> 
+                <!-- <button onclick="hideColorPicker()">Cancel</button> -->
+                <!-- <button type="submit">Add Task</button> -->
+              </div>
+                </div>
+            </form>
+
+        </div>
+</div>
+        
+    </div>
+
+
+     
+
+<!-- <div class="footerdiv" style="background-color: #9381ff;">
+    bhnmbnbm
+</div>  -->
+
+
+    <footer class="footer">
+        <img src="./Images/footeer_logo.png" alt="">
+        <p>Fantasy in itself.</p>
+
+        <div class="social-media">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <p> ©2024 MagickMerch.</p>
+
+    </footer>
+    <div id="whiteboardModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeWhiteboardPopup()">&times;</span>
+          <iframe id="whiteboardIframe" src="https://www.wix.com/logo/maker?utm_source=bing&utm_medium=cpc&utm_campaign=506099140^1262240352708866^search%20logo%20-%20en&experiment_id=logo%20maker^e^^&msclkid=504cbde88c2c11b6e421d811fab05c28"></iframe>
+        </div>
+      </div>
+
+
+      <div id="timerModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeTimerPopup()">&times;</span>
+          <iframe id="timerIframe" src="https://www.wix.com/lp-en/website-builder?utm_source=bing&utm_campaign=506098993^1271036445625962^search%20-%20bing%20rest&experiment_id=web%20page%20designer^e^^&msclkid=0acd60eb413217288f45051238224631&utm_medium=cpc"></iframe>
+        </div>
+      </div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+<script>
+    function openWhiteboardPopup() {
+  var modal = document.getElementById('whiteboardModal');
+  modal.style.display = 'block';
+ 
+}
+
+// Function to close the whiteboard popup
+function closeWhiteboardPopup() {
+  var modal = document.getElementById('whiteboardModal');
+  modal.style.display = 'none';
+  
+}
+
+
+
+    function openTimerPopup() {
+  var modal1 = document.getElementById('timerModal');
+  modal1.style.display = 'block';
+ 
+}
+
+// Function to close the whiteboard popup
+function closeTimerPopup() {
+  var modal1 = document.getElementById('timerModal');
+  modal1.style.display = 'none';
+  
+}
+</script>
+    <script src="./js/addtask.js"></script>
+    <script src="./js/quotes.js"></script>
+
+    <script src="./js/nav.js"></script>
+</body>
+
+</html>
